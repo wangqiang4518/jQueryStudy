@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>事件冒泡演示</title>
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#div1").bind("click", function(e){
+				$("#contentDiv").html($("#contentDiv").html()+"<p>div1</p>");
+				// e.stopPropagation();	//阻止事件冒泡
+				return false;			//相当于e.stopPropagation()
+
+			});
+			$("#div2").bind("click", function(e){
+				$("#contentDiv").html($("#contentDiv").html()+"<p>div2</p>");
+				// e.stopPropagation();
+				return false;
+
+			});
+			$("#div3").bind("click", function(e){
+				$("#contentDiv").html($("#contentDiv").html()+"<p>div3</p>");
+				// e.stopPropagation();
+				return false;
+
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">最外层div1
+		<div id="div2">中间层div2
+			<div id="div3">内层div3</div>
+		</div>
+	</div>
+	<div id="contentDiv">
+		contentDiv
+	</div>
+</body>
+</html>
